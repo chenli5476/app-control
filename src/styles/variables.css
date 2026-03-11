@@ -1,0 +1,94 @@
+:root {
+  /* 字体规范 */
+  --font-family-chinese: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-family-english: Inter, "SF Pro Display", sans-serif;
+  --font-family: var(--font-family-chinese), var(--font-family-english);
+  
+  /* 字号层级 */
+  --font-size-h1: 28px;
+  --font-size-h2: 20px;
+  --font-size-h3: 16px;
+  --font-size-body: 14px;
+  --font-size-caption: 12px;
+  --font-size-data: 32px;
+  
+  /* 字重 */
+  --font-weight-light: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  
+  /* 核心色彩 */
+  --color-primary-dark: #1B3A2F; /* 主色-深森绿 */
+  --color-secondary-olive: #8B7355; /* 辅色-橄榄金 */
+  --color-accent-orange: #C65D3B; /* 强调色-赭石橙 */
+  --color-neutral-gray: #475569; /* 中性色-石板灰 */
+  
+  /* 背景与表面色 */
+  --color-bg-page: #F7F5F2; /* 页面背景 */
+  --color-bg-card: #FFFFFF; /* 卡片背景 */
+  --color-bg-hover: #F0EDE8; /* 悬浮背景 */
+  --color-bg-dark: #1C1917; /* 深色模式背景 */
+  --color-border: #E8E4DF; /* 边框颜色 */
+  
+  /* 功能色（语义化色彩） */
+  --color-success: #4A6741; /* 成功/完成 */
+  --color-warning: #B45309; /* 警告/注意 */
+  --color-error: #991B1B; /* 错误/危险 */
+  --color-info: #475569; /* 信息/提示 */
+  
+  /* 文字颜色 */
+  --color-text-primary: #1B3A2F;
+  --color-text-secondary: #475569;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #94A3B8;
+  
+  /* 边框与阴影 */
+  --border-radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  
+  /* 按钮样式 */
+  --btn-primary-bg: var(--color-primary-dark);
+  --btn-primary-text: var(--color-text-light);
+  --btn-primary-hover: #142922;
+  
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-primary-dark);
+  --btn-secondary-border: 1px solid var(--color-primary-dark);
+  --btn-secondary-hover: var(--color-bg-hover);
+  
+  --btn-accent-bg: var(--color-accent-orange);
+  --btn-accent-text: var(--color-text-light);
+  --btn-accent-hover: #A84A2D;
+  
+  --btn-text-bg: transparent;
+  --btn-text-text: var(--color-neutral-gray);
+  --btn-text-hover: var(--color-primary-dark);
+  
+  /* 导航样式 */
+  --nav-bg: var(--color-primary-dark);
+  --nav-text: var(--color-text-light);
+  --nav-active-border: 2px solid var(--color-accent-orange);
+  
+  /* 图标样式 */
+  --icon-size-sm: 16px;
+  --icon-size-md: 24px;
+  --icon-size-lg: 32px;
+  --icon-stroke: 2px;
+  --icon-color: var(--color-neutral-gray);
+  --icon-color-active: var(--color-primary-dark);
+  --icon-color-warning: var(--color-accent-orange);
+  
+  /* 关键页面样式 */
+  --chat-user-bg: var(--color-bg-hover);
+  --chat-user-text: var(--color-text-primary);
+  --chat-ai-bg: var(--color-bg-card);
+  --chat-ai-text: var(--color-text-secondary);
+  --chat-ai-border: 4px solid var(--color-primary-dark);
+  
+  --calendar-has-record: var(--color-primary-dark);
+  --calendar-selected: var(--color-primary-dark);
+  --calendar-today: var(--color-accent-orange);
+  
+  --record-card-border: 4px solid var(--color-secondary-olive);
+}

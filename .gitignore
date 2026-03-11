@@ -1,0 +1,47 @@
+﻿# Dependencies
+node_modules/
+backend/node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Environment variables - 绝对不能上传！
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+orchard_ai/.env
+
+# Build outputs
+dist/
+build/
+target/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Temporary files
+temp/
+*.tmp
+*.temp
+*.timestamp-*.mjs
+
+# Test files (可能包含敏感信息)
+test-*.js
+test-*.py

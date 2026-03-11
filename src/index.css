@@ -1,0 +1,75 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-orange);
+}
+
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+}
+
+/* 确保布局占满整个屏幕 */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
