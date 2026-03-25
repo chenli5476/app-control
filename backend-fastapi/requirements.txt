@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+openai
+Pillow
+python-dotenv
+loguru
+sqlalchemy
+pymysql
+pydantic

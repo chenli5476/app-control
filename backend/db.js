@@ -38,15 +38,28 @@ async function createTables() {
     const connection = await pool.getConnection();
     
     // 创建用户表
+    await connection.query(`DROP TABLE IF EXISTS users`);
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) NOT NULL,
-        phone VARCHAR(20) NOT NULL,
+        password VARCHAR(100) NOT NULL,
+        phone VARCHAR(20) NOT NULL UNIQUE,
+        name VARCHAR(50) NOT NULL,
         role VARCHAR(20) NOT NULL,
         orchard_id INT DEFAULT NULL,
+        status VARCHAR(20) DEFAULT 'active',
+        ban_reason TEXT DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
+    `);
+    
+    // 添加默认用户数据
+    await connection.query(`
+      INSERT IGNORE INTO users (username, password, phone, name, role) VALUES
+      ('15205036033', '121380', '15205036033', '知澜', 'superadmin'),
+      ('15367896477', '123456', '15367896477', '张老板', 'level1'),
+      ('15205036034', '123456', '15205036034', '李老板', 'level2')
     `);
     
     // 创建果园表
@@ -145,6 +158,19 @@ async function createTables() {
         images JSON DEFAULT NULL,
         status VARCHAR(20) DEFAULT '已提交',
         reply TEXT DEFAULT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    
+    // 创建通知表
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS notifications (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        content TEXT DEFAULT NULL,
+        type VARCHAR(50) DEFAULT 'system',
+        is_read BOOLEAN DEFAULT false,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);

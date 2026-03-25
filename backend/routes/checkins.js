@@ -67,4 +67,118 @@ router.get('/statistics', async (req, res) => {
   }
 });
 
+// 获取打卡记录列表（与前端API匹配）
+router.get('/list', async (req, res) => {
+  try {
+    const { year, month, user_id } = req.query;
+    let query = 'SELECT * FROM check_ins';
+    const params = [];
+    
+    if (year || month || user_id) {
+      query += ' WHERE';
+      if (year) {
+        query += ' YEAR(created_at) = ?';
+        params.push(year);
+      }
+      if (year && (month || user_id)) {
+        query += ' AND';
+      }
+      if (month) {
+        query += ' MONTH(created_at) = ?';
+        params.push(month);
+      }
+      if ((year || month) && user_id) {
+        query += ' AND';
+      }
+      if (user_id) {
+        query += ' user_id = ?';
+        params.push(user_id);
+      }
+    }
+    
+    query += ' ORDER BY created_at DESC';
+    const [rows] = await pool.query(query, params);
+    
+    res.json({
+      success: true,
+      data: rows
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      error: '获取打卡记录失败' 
+    });
+  }
+});
+
+// 获取今日打卡记录
+router.get('/today', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM check_ins WHERE DATE(created_at) = DATE(CURRENT_DATE) ORDER BY created_at DESC');
+    res.json({
+      success: true,
+      data: rows
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      error: '获取今日打卡记录失败' 
+    });
+  }
+});
+
+// 获取打卡统计数据（与前端API匹配）
+router.get('/stats', async (req, res) => {
+  try {
+    const { year, month } = req.query;
+    let query = 'SELECT type, COUNT(*) as count FROM check_ins';
+    const params = [];
+    
+    if (year || month) {
+      query += ' WHERE';
+      if (year) {
+        query += ' YEAR(created_at) = ?';
+        params.push(year);
+      }
+      if (year && month) {
+        query += ' AND';
+      }
+      if (month) {
+        query += ' MONTH(created_at) = ?';
+        params.push(month);
+      }
+    }
+    
+    query += ' GROUP BY type';
+    const [stats] = await pool.query(query, params);
+    
+    res.json({
+      success: true,
+      data: stats
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      error: '获取打卡统计数据失败' 
+    });
+  }
+});
+
+// 删除打卡记录
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM check_ins WHERE id = ?', [id]);
+    res.json({ 
+      success: true, 
+      message: '打卡记录已删除' 
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      error: '删除打卡记录失败' 
+    });
+  }
+});
+
 module.exports = router;

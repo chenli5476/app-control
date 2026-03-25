@@ -1,0 +1,68 @@
+.layout {
+  min-height: 100vh;
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+  border-radius: 4px;
+}
+
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+  margin: 24px 0;
+  min-height: 280px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .site-layout-content {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .logo {
+    margin: 16px 16px 16px 0;
+  }
+}
+
+/* 搜索框placeholder样式 */
+.ant-input::placeholder {
+  color: #fff !important;
+  opacity: 0.7 !important;
+}
+
+/* 修复菜单折叠导致的 aria-hidden 警告 */
+.ant-menu-overflow-item {
+  display: inline-flex !important;
+  opacity: 1 !important;
+  height: auto !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+.ant-menu-overflow-item.ant-menu-overflow-item-rest {
+  display: none !important;
+}
+
+/* 确保二级导航菜单项都显示 */
+.ant-menu-horizontal .ant-menu-overflow-item {
+  flex-shrink: 0;
+}
+
+/* 隐藏横向滚动条但保留滚动功能 */
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+/* 二级导航容器 */
+.ant-layout > div[style*="background-color: #2d4a3e"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
